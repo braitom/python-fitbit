@@ -645,6 +645,14 @@ class Fitbit(object):
         )
         return self.make_request(url)
 
+    def get_activity_summary(self, user_id=None, base_date='today'):
+
+        url = "{0}/{1}/user/{2}/activities/date/{base_date}.json".format(
+            *self._get_common_args(user_id),
+            base_date=self._get_date_string(base_date)
+        )
+        return self.make_request(url)
+
     def intraday_time_series(self, resource, base_date='today', detail_level='1min', start_time=None, end_time=None):
         """
         The intraday time series extends the functionality of the regular time series, but returning data at a
